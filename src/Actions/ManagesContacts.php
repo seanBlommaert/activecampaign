@@ -53,14 +53,16 @@ trait ManagesContacts
      * @param string $email
      * @param string $firstName
      * @param string $lastName
-     * @param int|null $phone
+     * @param string|null $phone
+     * @param array|null $fieldValues
      *
      * @return Contact|null
      */
-    public function createContact($email, $firstName, $lastName, $phone = null)
+    public function createContact($email, $firstName, $lastName, $phone = null, $fieldValues = null)
     {
+        $contactData = $this->post('contacts', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone', 'fieldValues')]]);
         $contacts = $this->transformCollection(
-            $this->post('contacts', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone')]]),
+            ['contact' => $contactData['contact']],
             Contact::class
         );
 
@@ -77,7 +79,7 @@ trait ManagesContacts
      *
      * @return Contact
      */
-    public function findOrCreateContact($email, $firstName, $lastName, $phone)
+    public function findOrCreateContact($email, $firstName, $lastName, $phone, $fieldValues = null)
     {
         $contact = $this->findContact($email);
 
@@ -91,15 +93,19 @@ trait ManagesContacts
     /**
      * Update or create an account.
      *
-     * @param string $name
-     * @param array $data
+     * @param string $email
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $phone
+     * @param array|null $fieldValues
      *
      * @return Contact
      */
-    public function updateOrCreateContact($email, $firstName, $lastName, $phone)
+    public function updateOrCreateContact($email, $firstName, $lastName, $phone, $fieldValues = null)
     {
+        $contactData = $this->post('contact/sync', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone', 'fieldValues')]]);
         $contacts = $this->transformCollection(
-            $this->post('contact/sync', ['json' => ['contact' => compact('email', 'firstName', 'lastName', 'phone')]]),
+            ['contact' => $contactData['contact']],
             Contact::class
         );
 
