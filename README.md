@@ -6,13 +6,11 @@
 [![StyleCI](https://styleci.io/repos/176945288/shield)](https://styleci.io/repos/176945288)
 [![License](https://poser.pugx.org/testmonitor/activecampaign/license)](https://packagist.org/packages/testmonitor/activecampaign)
 
-:bangbang: **Important Notice**: This package is no longer maintained. Feel free to fork the repository if you wish to continue development. Thank you for your support and understanding.
-
 ---
 
 This package provides a PHP SDK for the ActiveCampaign API (v3).
 
-It is inspired by the code style of [Laravel's Forge SDK](https://github.com/themsaid/forge-sdk).
+It is a fork of [https://github.com/testmonitor/activecampaign](https://github.com/testmonitor/activecampaign).
 
 For more information on the ActiveCampaign API, refer to their [developer documentation](https://developers.activecampaign.com/reference).
 
