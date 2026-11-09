@@ -58,9 +58,9 @@ class ActiveCampaign
      *
      * @param string $apiUrl
      * @param string $apiKey
-     * @param \GuzzleHttp\Client $guzzle
+     * @param \GuzzleHttp\Client|null $guzzle
      */
-    public function __construct($apiUrl, $apiKey, HttpClient $guzzle = null)
+    public function __construct($apiUrl, $apiKey, ?HttpClient $guzzle = null)
     {
         $this->apiUrl = $apiUrl;
         $this->apiKey = $apiKey;

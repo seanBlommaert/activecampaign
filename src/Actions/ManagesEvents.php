@@ -113,7 +113,6 @@ trait ManagesEvents
 
         $result = curl_exec($curl);
         if ($result !== false) {
-            curl_close($curl);
             $result = json_decode($result);
 
             if (isset($result->success) && $result->success) {
